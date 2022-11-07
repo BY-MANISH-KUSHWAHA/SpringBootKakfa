@@ -7,18 +7,19 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProducerService {
-    private static final String JSONTopic = "jsonPOC";
+
+    private static final String generalTopic = "generalPOC";
     @Autowired
-    KafkaTemplate<String, User> jsonTemplate;
+    KafkaTemplate<String,String> generalTemplate;
     public void sendStringMessage(String name){
         generalTemplate.send(generalTopic,name);
     }
 
 
 
-    private static final String generalTopic = "generalPOC";
+    private static final String JSONTopic = "jsonPOC";
     @Autowired
-    KafkaTemplate<String,String> generalTemplate;
+    KafkaTemplate<String, User> jsonTemplate;
     public void sendJsonMessage(User user){
         jsonTemplate.send(JSONTopic,user);
     }
