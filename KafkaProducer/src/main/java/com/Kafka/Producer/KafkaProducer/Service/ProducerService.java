@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProducerService {
-    @Autowired
     private static final String JSONTopic = "jsonPOC";
+    @Autowired
     KafkaTemplate<String, User> jsonTemplate;
     public void sendStringMessage(String name){
         generalTemplate.send(generalTopic,name);
@@ -16,8 +16,8 @@ public class ProducerService {
 
 
 
-    @Autowired
     private static final String generalTopic = "generalPOC";
+    @Autowired
     KafkaTemplate<String,String> generalTemplate;
     public void sendJsonMessage(User user){
         jsonTemplate.send(JSONTopic,user);
